@@ -1,4 +1,4 @@
-# Reveal-tx?
+# reveal-tx?
 
 A small library to make using transactions safer and explicit; essentially make transaction boundaries
 blatantly obvious and offer some compile time guarantees. Small enough to just copy the code, you do not need to add a
@@ -166,7 +166,7 @@ fun createCity(name: String) {
 }
 
 /**
- * tx-read, this can be called in read/write CitiesDb transactions. 
+ * tx-read, this can be called in read/write CitiesDb transactions.
  */
 context(_: TxReader<CitiesDb>)
 fun readCities(): List<String> = Cities.select(Cities.name).map { it[Cities.name] }.toList()
@@ -211,12 +211,18 @@ suspend fun citiesAndTowns(citiesDb: CitiesDb, townsDb: TownsDb): List<String> {
 
 fun main(): Unit = runBlocking {
 
+    //Enable chaos 👿
+    chaos {
+        enabled = true
+        seed = 42
+    }
+
     //tx-repeat, use chaos to test for retries.
     //Fail 25% of the time forcing a transaction retry.
     val chaosKey = ChaosKey("test", ChaosProfile.FAIL_25)
 
     val txConfiguration = TxConfiguration(postCondition = { _, _ ->
-        //tx-repeat, inject chaos
+        //tx-repeat, inject chaos 👿
         injectChaos(chaosKey) {
             throw SQLException(it)
         }

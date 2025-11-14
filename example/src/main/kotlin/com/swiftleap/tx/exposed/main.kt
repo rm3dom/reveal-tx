@@ -6,6 +6,7 @@ import com.swiftleap.tx.TxReader
 import com.swiftleap.tx.TxWriter
 import com.swiftleap.tx.chaos.ChaosKey
 import com.swiftleap.tx.chaos.ChaosProfile
+import com.swiftleap.tx.chaos.chaos
 import com.swiftleap.tx.chaos.injectChaos
 import com.swiftleap.tx.exposed.v1.ExposedFactory
 import com.swiftleap.tx.exposed.v1.TxConfiguration
@@ -117,12 +118,18 @@ suspend fun citiesAndTowns(citiesDb: CitiesDb, townsDb: TownsDb): List<String> {
 
 fun main(): Unit = runBlocking {
 
+    //Enable chaos 👿
+    chaos {
+        enabled = true
+        seed = 42
+    }
+
     //tx-repeat, use chaos to test for retries.
     //Fail 25% of the time forcing a transaction retry.
     val chaosKey = ChaosKey("test", ChaosProfile.FAIL_25)
 
     val txConfiguration = TxConfiguration(postCondition = { _, _ ->
-        //tx-repeat, inject chaos
+        //tx-repeat, inject chaos 👿
         injectChaos(chaosKey) {
             throw SQLException(it)
         }
