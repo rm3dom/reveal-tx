@@ -1,0 +1,33 @@
+[versions]
+junit-jupiter-engine = "5.12.1"
+h2database = "2.3.232"
+exposed = "1.0.0-rc-3"
+kotlin= "2.2.20"
+atomicfu = "2.1.20"
+detekt = "2.0.0-alpha.1"
+atomicfuGradlePlugin = "0.29.0"
+kotlinxCoroutinesCore = "1.10.2"
+
+[libraries]
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter-engine" }
+atomicfu = { module = "org.jetbrains.kotlin:atomicfu", version.ref = "kotlin" }
+atomicfu-common = { module = "org.jetbrains.kotlin:atomicfu-common", version.ref = "kotlin" }
+atomicfu-jvm = { module = "org.jetbrains.kotlin:atomicfu-jvm", version.ref = "kotlin" }
+atomicfu-gradle-plugin = { module = "org.jetbrains.kotlinx:atomicfu-gradle-plugin", version.ref = "atomicfuGradlePlugin" }
+atomicfu-runtime = { module = "org.jetbrains.kotlin:kotlinx-atomicfu-runtime", version.ref = "kotlin" }
+h2database-h2 = { module = "com.h2database:h2", version.ref = "h2database" }
+exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
+exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
+exposed-kotlin-datetime = { module = "org.jetbrains.exposed:exposed-kotlin-datetime", version.ref = "exposed" }
+postgresql = { module = "org.postgresql:postgresql", version = "42.7.4" }
+hikaricp = { module = "com.zaxxer:HikariCP", version = "5.1.0" }
+microsoft-sqlserver-jdbc = { module = "com.microsoft.sqlserver:mssql-jdbc", version = "12.4.0.jre11" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesCore" }
+detekt-gradle-plugin = { module = "dev.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+atomicfu-gradle = { id = "org.jetbrains.kotlinx.atomicfu", version.ref = "atomicfuGradlePlugin" }

@@ -1,0 +1,62 @@
+comments:
+  CommentOverPrivateFunction:
+    active: false
+  CommentOverPrivateProperty:
+    active: false
+  AbsentOrWrongFileLicense:
+    active: false
+  OutdatedDocumentation:
+    active: false
+
+style:
+  DataClassContainsFunctions:
+    active: false
+  BracesOnIfStatements:
+    active: false
+  UseIfInsteadOfWhen:
+    active: false
+  WildcardImport:
+    active: false
+  BracesOnWhenStatements:
+    active: false
+  UnnecessaryParentheses:
+    active: false
+  ReturnCount:
+    active: false
+  OptionalUnit:
+    active: false
+  StringShouldBeRawString:
+    active: false
+
+
+naming:
+  FunctionNameMinLength:
+    active: false
+  TopLevelPropertyNaming:
+    active: false
+  MatchingDeclarationName:
+    active: false
+  FunctionNameMaxLength:
+    active: false
+  NoNameShadowing:
+    active: false
+  MemberNameEqualsClassName:
+    active: false
+
+complexity:
+  StringLiteralDuplication:
+    active: false
+  TooManyFunctions:
+    active: false
+  ReplaceSafeCallChainWithRun:
+    active: false
+  LongParameterList:
+    active: false
+  LabeledExpression:
+    active: false
+
+potential-bugs:
+  UnnamedParameterUse:
+    active: false
+  NullableToStringCall:
+    active: false
