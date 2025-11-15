@@ -146,21 +146,21 @@ fun main(): Unit = runBlocking {
         SchemaUtils.create(Cities)
     }
 
-    val towns2 = Database.connect(
+    val townsDb = Database.connect(
         url = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1",
         driver = "org.h2.Driver",
         user = "sa",
         password = ""
     )
 
-    transaction(towns2) {
+    transaction(townsDb) {
         SchemaUtils.create(Towns)
     }
 
 
     val citiesAndTowns = citiesAndTowns(
         citiesDb = CitiesDb(citiesDb, txConfiguration),
-        townsDb = TownsDb(towns2, txConfiguration)
+        townsDb = TownsDb(townsDb, txConfiguration)
     )
 
     println(citiesAndTowns)
