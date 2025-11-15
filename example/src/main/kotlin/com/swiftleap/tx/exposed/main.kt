@@ -99,7 +99,7 @@ suspend fun citiesAndTowns(citiesDb: CitiesDb, townsDb: TownsDb): List<String> {
     //NOTE: You should use the saga pattern around the two write transactions.
 
     val towns = townsDb.executeWrite {
-        createTown("B")
+        createTown("Stilbaai")
         readTowns()
     }
 
@@ -109,11 +109,19 @@ suspend fun citiesAndTowns(citiesDb: CitiesDb, townsDb: TownsDb): List<String> {
     apiCall()
 
     val cities = citiesDb.executeWrite {
-        createCity("A")
+        createCity("Sydney")
         readCities()
     }
 
     return cities + towns
+}
+
+suspend fun compileTimeErrorExample(townsDb: TownsDb) {
+    //Uncomment to get a compile time error 🧨
+    //val townsError = townsDb.executeRead { readCities() }
+
+    //Uncomment to get a compile time error 🧨
+    //townsDb.executeRead { createTown() }
 }
 
 fun main(): Unit = runBlocking {

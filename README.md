@@ -114,6 +114,8 @@ a transaction—so that is not colouring. It also cannot write to the database w
 
 ## Example
 
+Suggestion, clone and play with the [example](https://github.com/rm3dom/reveal-tx/blob/main/example/src/main/kotlin/com/swiftleap/tx/exposed/main.kt).
+
 ```kotlin
 /**
  * A typed database / tx factory for cities.
@@ -209,6 +211,14 @@ suspend fun citiesAndTowns(citiesDb: CitiesDb, townsDb: TownsDb): List<String> {
     }
 
     return cities + towns
+}
+
+suspend fun compileTimeErrorExample(townsDb: TownsDb) {
+    //Uncomment to get a compile time error 🧨
+    //val townsError = townsDb.executeRead { readCities() }
+
+    //Uncomment to get a compile time error 🧨
+    //townsDb.executeRead { createTown() }
 }
 
 fun main(): Unit = runBlocking {
