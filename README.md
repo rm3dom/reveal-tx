@@ -20,7 +20,7 @@ There is also a C# example [here](https://github.com/rm3dom/ColourYourFunctions/
 
 ## Important note
 
-You can get most of the same guarantees by testing transaction failures and retries in your existing code.
+You can get most (not all) of the guarantees by testing transaction failures and retries in your existing code.
 *Deadlocks and other database errors will happen in production*, if you did not test for them, one of the following
 could happen:
 
@@ -74,9 +74,6 @@ Only one transaction may exist in the call stack.
 * You may not nest write transactions.
 * You may not nest a transaction when the outer transaction is a write and the inner transaction uses `ReadCommitted`
   isolation level or higher.
-
-Note: this refers to starting a new transaction within the scope of another, not to database‑managed nested
-transactions.
 
 ### tx-read
 
